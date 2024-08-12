@@ -163,7 +163,7 @@
   steps:
     - Открываем сайт магазина https://hexlet-products-store.vercel.app/
     - Открываем DevTools
-    - Проверяем доступность сайта на следующих устройствах:
+    - Проверяем доступность сайта на следующих устройствах
     - iPhone 12 Pro
     - Samsung Galaxy S8+
     - iPad Pro
