@@ -1,0 +1,188 @@
+---
+test-cases:
+- summary: |
+    Проверка работоспособности корзины
+  status: pass
+
+- summary: |
+    Проверка работоспособности карточек товара
+  status: pass
+
+- summary: |
+    Проверка работоспособности поиска по ключевому слову или категории
+  status: fail
+
+- summary: |
+    Проверка работоспособности фильтров
+  status: fail
+
+- summary: |
+    Проверка скорости загрузки сайта
+  status: pass
+
+- summary: |
+    UX тестирование сайта
+  status: fail
+
+- summary: |
+    Проверка безопасности сайта
+  status: pass
+
+- summary: |
+    Проверка мобильной версии сайта
+  status: fail
+
+- summary: |
+    Проверка кроссбраузерности
+  status: pass
+
+- summary: |
+    Нагрузочное тестирование сайта
+  status: skipped
+
+- summary: |
+    Проверка адаптивности
+  status: fail
+
+- summary: |
+    Проверка ввода некоректных данных
+  status: pass
+
+- summary: |
+    Проверка подтверждения оформления заказа
+  status: fail
+
+- summary: |
+    При заказе остаются контакты клиента
+  status: fail
+  
+bugreports:
+- summary: |
+    Не работает кнопка очистки корзины
+  environment: |
+    Google Chrome Версия 127.0.6533.100 (Официальная сборка), (64 бит)
+    ОС Windows 11 Домашняя v23H2
+  steps-to-reproduce: |
+    1. Зайти на страницу сайта https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+    2. Добавить один или несколько товаров в корзину
+    3. Нажать кнопку "Очистить корзину"
+    4. Перезагрузить страницу
+  expected-result: |
+    Корзина после очистки остается пустой
+  actual-result: |
+    Добавленный товар остается в корзине после очистки
+
+- summary: |
+    Некорректно работают фильтры
+  environment: |
+    Google Chrome Версия 127.0.6533.100 (Официальная сборка), (64 бит)
+    ОС Windows 11 Домашняя v23H2
+  steps-to-reproduce: |
+    1. Зайти на страницу сайта https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+    2. Ввести в поиске по названию значение "11111111111111111111"
+  expected-result: |
+    Выводится сообщение о том что не найдено товара с таким названием
+  actual-result: |
+    Фильтр полностью сбрасывается и выводится весь список товара
+
+- summary: |
+    Сломана кнопка "В наличии"
+  environment: |
+    Google Chrome Версия 127.0.6533.100 (Официальная сборка), (64 бит)
+    ОС Windows 11 Домашняя v23H2
+  steps-to-reproduce: |
+    1. Зайти на страницу сайта https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+    2. Нажать на кнопку "В наличии" в фильтрах
+  expected-result: |
+    Фильтруется товар который есть в наличии на сайте
+  actual-result: |
+    Полностью ломаются фильры, товар вообще не фильтруется
+    Исчезает кнопки переключения страниц
+    Приходится перезагружать страницу
+
+- summary: |
+    Сломаны кнопки переключения страниц
+  environment: |
+    Google Chrome Версия 127.0.6533.100 (Официальная сборка), (64 бит)
+    ОС Windows 11 Домашняя v23H2
+  steps-to-reproduce: |
+    1. Зайти на страницу сайта https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+    2. Нажать на кнопку "Следующая страница"
+  expected-result: |
+    Выводится следующая страница товара
+    Есть возможность листать дальше
+  actual-result: |
+    Выводится следующая страница товара но есть только кнопка возврата на предидущую страницу
+    Нет возможности листать дальше
+
+- summary: |
+    Смещены кнопки удаления товара в корзине
+  environment: |
+    Google Chrome Версия 127.0.6533.100 (Официальная сборка), (64 бит)
+    ОС Windows 11 Домашняя v23H2
+  steps-to-reproduce: |
+    1. Зайти на страницу сайта https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+    2. Добавить в корзину несколько товаров с разной длиной названия
+    3. Зайти в корзину
+  expected-result: |
+    Все кнопки и столбцы со значениями расположены ровно, отстутствуют дефекты верстки
+  actual-result: |
+    Столбец с количеством товара и кнопки удаления немого смещаются в зависимости от длины названия товара
+    Скриншот в assets/Корзина товара V2.png
+
+- summary: |
+    Фото товара в списке обрезаются
+  environment: |
+    Google Chrome Версия 127.0.6533.100 (Официальная сборка), (64 бит)
+    ОС Windows 11 Домашняя v23H2
+  steps-to-reproduce: |
+    1. Зайти на страницу сайта https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+    2. Перейти в список товаров
+    3. Зайти в корзину
+  expected-result: |
+    Фото товара расположены правильно, отсутствуют обрезания, товар просматривается полностью
+  actual-result: |
+    Фото товара обрезаются, некоторые товары не видно полностью в списке
+    Скриншот в assets/Список товаров V2.png
+
+- summary: |
+    В мобильных версиях сайта фильтры смещаются в низ страницы
+  environment: |
+    Google Chrome Версия 127.0.6533.100 (Официальная сборка), (64 бит)
+    ОС Windows 11 Домашняя v23H2
+  steps-to-reproduce: |
+    1. Зайти на страницу сайта https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+    2. Зайти в Devtools
+    3. Выбрать девайс тулбаре iPhone 12 Pro или любой другой мобильный телефон
+  expected-result: |
+    Сайт хорошо адаптирован под работу на мобильных устройствах
+   Отсутствуют дефекты верстки или растягивания сайта
+  actual-result: |
+    Фильтры товара смещаются в самый низ страницы, приходится долго листать чтобы до них до дойти
+
+- summary: |
+    На странице есть форма логина в Vercel
+  environment: |
+    Google Chrome Версия 127.0.6533.100 (Официальная сборка), (64 бит)
+    ОС Windows 11 Домашняя v23H2
+  steps-to-reproduce: |
+    1. Зайти на страницу сайта https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+  expected-result: |
+    На сайте отстутствуют лишние ссылки не относящиеся к сайту
+  actual-result: |
+    На сайте есть форма логина в Vercel
+    Скриншот в assets/vercel.png
+
+- summary: |
+    Фильтр "без категории" пустой
+  environment: |
+    Google Chrome Версия 127.0.6533.100 (Официальная сборка), (64 бит)
+    ОС Windows 11 Домашняя v23H2
+  steps-to-reproduce: |
+    1. Зайти на страницу сайта https://products-store-git-v2bugfixes-hexlet-components.vercel.app/
+    2. Нажать на кнопку выбора категории в фильтрах
+  expected-result: |
+    Есть список всех категорий а также возможность выбрать "Без категории"
+  actual-result: |
+    Кнопка "Без категории" пустая
+    Скриншот в assets/Без категории V2.png
