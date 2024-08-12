@@ -38,7 +38,7 @@ test-cases:
 
 - summary: |
     Нагрузочное тестирование сайта
-  status: skipped
+  status: pass
 
 - summary: |
     Проверка адаптивности
